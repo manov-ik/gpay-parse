@@ -64,6 +64,8 @@ export default function Home({ saveRows, rows }) {
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center justify-center px-4">
       {/* Header */}
+      <img src="/logo.svg" alt="gpay.parse logo" className="w-16 h-16 mb-4" />
+
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-black tracking-tight mb-2">
           gpay<span className="text-emerald-400">.</span>parse
@@ -205,7 +207,10 @@ export default function Home({ saveRows, rows }) {
 
       {/* Footer hint */}
       <p className="mt-8 text-zinc-700 text-xs">
-        Developed by <span className="font-mono text-zinc-500">manov-ik</span>
+        Developed by{" "}
+        <span className="font-mono text-zinc-500">
+          <a href="https://manovik.netlify.app/">manov-ik</a>
+        </span>
       </p>
     </div>
   );
