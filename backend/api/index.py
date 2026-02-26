@@ -169,4 +169,4 @@ async def parse_html(file: UploadFile = File(...)):
 
 @app.get("/")
 def root():
-    return {"message": "GPay HTML to CSV parser API. POST /parse with your HTML file.", "frontend_url": test}
+    return {"message": "GPay HTML to CSV parser API. POST /parse with your HTML file."}
