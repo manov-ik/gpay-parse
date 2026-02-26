@@ -5,20 +5,16 @@ from bs4 import BeautifulSoup
 import re
 import csv
 import io
-import dotenv
-import os
-
-dotenv.load_dotenv()
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL")],
-    allow_credentials=False,       # ← added (required when allow_origins=*)
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["Content-Disposition"]
+    expose_headers=["Content-Disposition"],
 )
 
 KNOWN_STATUSES = {"Completed", "Failed", "Pending", "Cancelled", "Declined"}
