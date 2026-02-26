@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import Response
 from bs4 import BeautifulSoup
 import re
 import csv
@@ -15,8 +15,10 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[os.getenv("FRONTEND_URL")],
+    allow_credentials=False,       # ← added (required when allow_origins=*)
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["Content-Disposition"]
 )
 
 KNOWN_STATUSES = {"Completed", "Failed", "Pending", "Cancelled", "Declined"}
@@ -158,8 +160,8 @@ async def parse_html(file: UploadFile = File(...)):
     writer.writerows(rows)
 
     output.seek(0)
-    return StreamingResponse(
-        iter([output.getvalue()]),
+    return Response(
+        content=output.getvalue(),
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=gpay_transactions.csv"},
     )
