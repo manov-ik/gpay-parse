@@ -5,12 +5,16 @@ from bs4 import BeautifulSoup
 import re
 import csv
 import io
+import dotenv
+import os
+
+dotenv.load_dotenv()
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[os.getenv("FRONTEND_URL")],
     allow_methods=["*"],
     allow_headers=["*"],
 )
