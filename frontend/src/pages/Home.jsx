@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -64,7 +65,7 @@ export default function Home({ saveRows, rows }) {
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center justify-center px-4">
       {/* Header */}
-      <img src="/logo.svg" alt="gpay.parse logo" className="w-16 h-16 mb-4" />
+      <img src={logo} alt="gpay.parse" className="w-16 h-16 mb-4" />
 
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-black tracking-tight mb-2">
